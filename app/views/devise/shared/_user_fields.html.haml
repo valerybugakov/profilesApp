@@ -1,0 +1,31 @@
+.field
+  = f.label :email
+  %br/
+  = f.email_field :email, autofocus: true
+.field
+  = f.label :name
+  %br/
+  = f.text_field :name
+.field
+  = f.label :password
+  - if @validatable
+    %em
+      (#{@minimum_password_length} characters minimum)
+  %br/
+  = f.password_field :password, autocomplete: "off"
+.field
+  = f.label :password_confirmation
+  %br/
+  = f.password_field :password_confirmation, autocomplete: "off"
+
+.field
+  = f.label :about
+  %br/
+  = f.text_area :about, size: '100x5'
+
+.field
+  - if resource.avatar.file?
+    = image_tag resource.avatar.url(:thumb)
+    = link_to 'Remove avatar', remove_avatar_path(resource.id), method: :put
+  = f.file_field :avatar
+

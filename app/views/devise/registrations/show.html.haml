@@ -1,0 +1,15 @@
+%h2 User profile
+
+- if @user.avatar.file?
+  = image_tag @user.avatar.url(:medium)
+%p.name
+  Name:
+  = @user.name
+- if current_user
+  %p.email
+    Email:
+    = @user.email
+  %p.about
+    About:
+    = @user.about
+
